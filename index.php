@@ -85,7 +85,7 @@ $show_complete_tasks = rand(0, 1);
                     <tr class="tasks__item task">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1">
+                                <input class="checkbox__input visually-hidden task__checkbox" type="checkbox" value="1"  <?php if($show_complete_tasks==1){print('checked');}?>>
                                 <span class="checkbox__text">Сделать главную страницу Дела в порядке</span>
                             </label>
                         </td>
@@ -95,8 +95,12 @@ $show_complete_tasks = rand(0, 1);
                         </td>
 
                         <td class="task__date"></td>
-                    </tr>
-                    <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
+                   
+						<?php if($show_complete_tasks==1):?>
+						<td class="task__controls">
+						</td>
+						<?php endif; ?>
+					</tr>
                 </table>
             </main>
         </div>
