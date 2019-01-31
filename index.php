@@ -96,11 +96,10 @@ $show_complete_tasks = rand(0, 1);
                         </td>
 
                         <td class="task__date"></td>
+					
+						<td class="task__controls">
+						</td>
 					</tr>
-					
-					
-					<td class="task__controls">
-					</td>
 					<?php endif; ?>
 					
                 </table>
