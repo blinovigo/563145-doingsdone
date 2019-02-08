@@ -89,7 +89,7 @@ $task_list = [
                     <ul class="main-navigation__list">
 						<?php foreach($cats as $key => $val): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?php echo($val);?></a>
+                            <a class="main-navigation__list-item-link" href="#"><?= $val;?></a>
                             <span class="main-navigation__list-item-count">0</span>
                         </li>
 						<?php endforeach; ?>
@@ -118,8 +118,7 @@ $task_list = [
                     </nav>
 
                     <label class="checkbox">
-                        <!--добавить сюда аттрибут "checked", если переменная $show_complete_tasks равна единице-->
-                        <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php if($show_complete_tasks == 1){echo("checked");}?>>
+                        <input class="checkbox__input visually-hidden show_completed" type="checkbox" <?php echo($show_complete_tasks == 1 ? "checked":" ")?>>
                         <span class="checkbox__text">Показывать выполненные</span>
                     </label>
                 </div>
@@ -128,11 +127,11 @@ $task_list = [
 					<?php foreach($task_list as $key => $val):
 						if($val[task_status] != 'Да' or $show_complete_tasks != 0):?>
 							
-                    <tr class="tasks__item task <?php if($val[task_status] == 'Да'){echo("task--completed");}?>">
+                    <tr class="tasks__item task <?php echo($val[task_status] == 'Да' ? "task--completed": " ");?>">
                         <td class="task__select">
                             <label class="checkbox task__checkbox">
-                                <input class="checkbox__input visually-hidden task__checkbox " type="checkbox" value="1" <?php if($val[task_status] == 'Да'){echo("checked");}?> >
-                                <span class="checkbox__text"><?php echo($val[task_name]);?></span>
+                                <input class="checkbox__input visually-hidden task__checkbox " type="checkbox" value="1" <?php echo($val[task_status] == 'Да' ? "checked":" ");?> >
+                                <span class="checkbox__text"><?=$val[task_name];?></span>
                             </label>
                         </td>
 
@@ -145,7 +144,6 @@ $task_list = [
 					<?php 
 						endif;
 					endforeach; ?>
-                    <!--показывать следующий тег <tr/>, если переменная $show_complete_tasks равна единице-->
                 </table>
             </main>
         </div>
