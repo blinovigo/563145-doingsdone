@@ -39,10 +39,20 @@ $task_list = [
 		'cats_name' => 'Домашние дела',
 		'task_status' => 'Нет'
 	]
-]
+];
 
+function summ_task($task__list, $cats__name){
+	$result=0;
+	foreach ($task__list as $key){
+		if ($key["cats_name"] == $cats__name){
+			$result++;
+		}
+	}
+	return $result; 
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -213,17 +223,3 @@ $task_list = [
 <script src="script.js"></script>
 </body>
 </html>
-<?php
-function summ_task($task__list, $cats__name){
-	$result=0;
-	foreach ($task__list as $key){
-		if ($key[cats_name] == $cats__name){
-			$result++;
-		}
-	}
-	return $result; 
-}
-
-
-
-?>
