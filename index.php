@@ -39,10 +39,20 @@ $task_list = [
 		'cats_name' => 'Домашние дела',
 		'task_status' => 'Нет'
 	]
-]
+];
 
+function summ_task($task__list, $cats__name){
+	$result=0;
+	foreach ($task__list as $key){
+		if ($key["cats_name"] == $cats__name){
+			$result++;
+		}
+	}
+	return $result; 
+}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -90,7 +100,7 @@ $task_list = [
 						<?php foreach($cats as $key => $val): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= $val;?></a>
-                            <span class="main-navigation__list-item-count">0</span>
+                            <span class="main-navigation__list-item-count"><?= summ_task($task_list, $val);?></span>
                         </li>
 						<?php endforeach; ?>
                     </ul>
