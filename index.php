@@ -10,7 +10,8 @@ $page_content = include_template('index.php', ['task_list' => $task_list]);
 $layout_content = include_template('layout.php',[
 	'content' => $page_content,
 	'categories' => $categories,
-	'title' => 'Дела в порядке'
+	'title' => 'Дела в порядке',
+	'task_list' => $task_list
 ]);
 
 print($layout_content);

@@ -24,7 +24,7 @@
 
 	<table class="tasks">
 		<?php foreach($task_list as $key => $val):
-			if($val[task_status] != 'Да' or $show_complete_tasks != 0):?>
+			if($val['task_status'] != 'Да' or $show_complete_tasks != 0):?>
 				
 		<tr class="tasks__item task <?php echo($val[task_status] == 'Да' ? "task--completed": " ");?>">
 			<td class="task__select">
