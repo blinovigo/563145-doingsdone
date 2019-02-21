@@ -28,3 +28,10 @@ function summ_task($task__list, $cats__name){
 	}
 	return $result; 
 }
+
+function timer_up_to_24_hours($date_finish_object){
+	if (strtotime($date_finish_object) - time() < 86400 && strtotime($date_finish_object) > 1 ){
+		print("task--important");
+	} 
+	
+}

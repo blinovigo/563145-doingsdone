@@ -25,9 +25,10 @@
 	<table class="tasks">
 		<?php foreach($task_list as $key => $val):
 			if($val['task_status'] != 'Да' or $show_complete_tasks != 0):?>
-				
-		<tr class="tasks__item task <?php echo($val['task_status'] == 'Да' ? "task--completed": " ");
-			echo(strtotime($val['date_finish']) - strtotime('20.02.2019 00:00:00') < 86400 && strtotime($val['date_finish']) > 1 ? "task--important" : " " );?>">
+		<tr class="tasks__item task <?php 
+			echo($val['task_status'] == 'Да' ? "task--completed": " ");
+			timer_up_to_24_hours($val['date_finish']); 
+			?>   ">
 			<td class="task__select">
 				<label class="checkbox task__checkbox">
 					<input class="checkbox__input visually-hidden task__checkbox " type="checkbox" value="1" <?php echo($val[task_status] == 'Да' ? "checked":" ");?> >
