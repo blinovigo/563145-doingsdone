@@ -43,7 +43,12 @@
 
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
-						<?php foreach($categories as $key => $val): ?>
+						<?php 
+						$sql ="SELECT name FROM project";
+						$result = mysqli_query($con, $sql);
+						$project = mysqli_fetch_all($result, MYSQLI_ASSOC);
+						var_dump($project);
+						foreach($project as $val): ?>
                         <li class="main-navigation__list-item">
                             <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($val);?></a>
                             <span class="main-navigation__list-item-count"><?=summ_task($task_list, $val);?></span>

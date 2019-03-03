@@ -1,6 +1,16 @@
 <?php
-// показывать или нет выполненные задачи
-$show_complete_tasks = rand(0, 1);
+
+$con = mysqli_connect("localhost", "root", "","doingsdone");
+
+// Проверка подключения БД
+if ($con == false) {
+   print("Ошибка подключения: ". mysqli_connect_error());
+}
+else {
+   print("Соединение установлено");
+}
+// Установка кодировки
+mysqli_set_charset($con, "utf8");
 
 
 require_once('functions.php');
