@@ -19,10 +19,10 @@ function include_template($name, $data) {
 
 
 
-function summ_task($task__list, $cats__name){
+function summ_task($task__list, $project__id){
 	$result=0;
-	foreach ($task__list as $key){
-		if ($key["cats_name"] == $cats__name){
+	foreach ($task__list as $key => $val){
+		if ($val['project_id'] == $project__id){
 			$result++;
 		}
 	}

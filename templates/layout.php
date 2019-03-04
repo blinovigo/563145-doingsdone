@@ -44,14 +44,10 @@
                 <nav class="main-navigation">
                     <ul class="main-navigation__list">
 						<?php 
-						$sql ="SELECT name FROM project";
-						$result = mysqli_query($con, $sql);
-						$project = mysqli_fetch_all($result, MYSQLI_ASSOC);
-						var_dump($project);
-						foreach($project as $val): ?>
+						foreach($project as $key => $val): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($val);?></a>
-                            <span class="main-navigation__list-item-count"><?=summ_task($task_list, $val);?></span>
+                            <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($val['name']);?></a>
+                            <span class="main-navigation__list-item-count"><?=summ_task($task, $val['project_id']);?></span>
                         </li>
 						<?php endforeach; ?>
                     </ul>
