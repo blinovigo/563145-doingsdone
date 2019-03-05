@@ -23,16 +23,16 @@
 	</div>
 
 	<table class="tasks">
-		<?php foreach($task_list as $key => $val):
-			if($val['task_status'] != 'Да' or $show_complete_tasks != 0):?>
+		<?php foreach($task as $key => $val):
+			if (empty($val['date_finish']) or $show_complete_tasks != 0):?>
 		<tr class="tasks__item task <?php 
-			echo($val['task_status'] == 'Да' ? "task--completed": " ");
-			timer_up_to_24_hours($val['date_finish']); 
+			echo(!empty($val['date_finish'])? "task--completed": " ");
+			timer_up_to_24_hours($val['term']); 
 			?>   ">
 			<td class="task__select">
 				<label class="checkbox task__checkbox">
-					<input class="checkbox__input visually-hidden task__checkbox " type="checkbox" value="1" <?php echo($val[task_status] == 'Да' ? "checked":" ");?> >
-					<span class="checkbox__text"><?=htmlspecialchars($val[task_name]);?></span>
+					<input class="checkbox__input visually-hidden task__checkbox " type="checkbox" value="1" <?php echo(!empty($val['date_finish']) ? "checked":" ");?> >
+					<span class="checkbox__text"><?=htmlspecialchars($val['name']);?></span>
 				</label>
 			</td>
 
