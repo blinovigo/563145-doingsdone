@@ -46,7 +46,13 @@
 						<?php 
 						foreach($project as $key => $val): ?>
                         <li class="main-navigation__list-item">
-                            <a class="main-navigation__list-item-link" href="#"><?= htmlspecialchars($val['name']);?></a>
+                            <a class="main-navigation__list-item-link" href="<?
+								$_GET['project_id'] = $val['project_id'];
+								$scriptname = pathinfo('', PATHINFO_BASENAME);
+								$query = http_build_query($_GET);
+								$url = "/".$scriptname."?".$query;
+								echo($url);
+							?>"><?= htmlspecialchars($val['name']);?></a>
                             <span class="main-navigation__list-item-count"><?=summ_task($task, $val['project_id']);?></span>
                         </li>
 						<?php endforeach; ?>

@@ -23,10 +23,13 @@
 	</div>
 
 	<table class="tasks">
-		<?php foreach($task as $key => $val):
-			if (empty($val['date_finish']) or $show_complete_tasks != 0):?>
+		<?php 
+			$count_task = 0; // cчетчик выведенных задач для выбранной категории
+			foreach($task as $key => $val):  //Вывод всего списка задач
+				if ($val['project_id'] == $_GET['project_id'] or !isset($_GET['project_id'])): $count_task++; // показ задач нужной категории
+			if (empty($val['date_finish']) or $show_complete_tasks != 0): //Показ завершенных задач  ?> 
 		<tr class="tasks__item task <?php 
-			echo(!empty($val['date_finish'])? "task--completed": " ");
+			echo(!empty($val['date_finish']) ? "task--completed": " ");
 			timer_up_to_24_hours($val['term']); 
 			?>   ">
 			<td class="task__select">
@@ -43,7 +46,11 @@
 			<td class="task__date"></td>
 		</tr>
 		<?php 
-			endif;
-		endforeach; ?>
+			endif; // показ завершенных задач
+			endif; //показ задач нужной категории
+		endforeach; 
+		
+		echo($count_task == 0 ? "Ошибка 404":""); // Вывод ошибки если в выбранной категории нет задач?>
+		
 	</table>
 </main>
